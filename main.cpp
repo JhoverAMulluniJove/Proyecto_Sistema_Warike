@@ -1,11 +1,18 @@
 #include <iostream>
-#include <string>
-#include <conio.h>
-#include <windows.h>
+#include "Product.h"
 
 using namespace std;
 
 int main()
 {
-    cout << "Iniciando . . . . .";
+    Product miProducto;
+
+    // Probamos la entrada de datos
+    cin >> miProducto;
+
+    // Probamos la salida con el formato que creamos
+    cout << "\nDatos del producto guardado:" << endl;
+    cout << miProducto << endl;
+
+    return 0;
 }

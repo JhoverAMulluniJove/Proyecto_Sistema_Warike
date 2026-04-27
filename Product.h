@@ -16,15 +16,16 @@ private:
     int code;
     string name;
     float amount;
+    float price;
 
     // Enlace a otros archivos
     Product *next;
 
 public:
     // Constructor: Inicializa las caracteristicas
-    Product() : code(0), name("(void)"), amount(0.0f), next(nullptr) {}
+    Product() : code(0), name("(void)"), amount(0.0f), price(0.0f), next(nullptr) {}
 
-    Product(int c, string n, float a, Product *q = nullptr) : code(c), name(n), amount(a), next(q) {}
+    Product(int c, string n, float a, float p, Product *q = nullptr) : code(c), name(n), amount(a), price(p), next(q) {}
 
     // Destructor simple
     ~Product() {}
@@ -33,10 +34,12 @@ public:
     int getCode() const { return code; }
     string getName() const { return name; }
     float getAmount() const { return amount; }
+    float getPrice() const { return price; }
 
     void setCode(int c) { code = c; }
     void setName(string n) { name = n; }
     void setAmount(float a) { amount = a; }
+    void setPrice(float p) { price = p; }
 
     // Acceso al enlace para el archivo de logica
     Product *getNext() const { return next; }
