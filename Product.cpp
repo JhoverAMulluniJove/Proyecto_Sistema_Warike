@@ -4,11 +4,19 @@
 
 using namespace std;
 
-// Implementacion de los constructores
-Product::Product() : code(0), name("(void)"), amount(0.0f), price(0.0f), next(nullptr) {}
+int Product::contadorID = 1;
 
-Product::Product(int c, string n, float a, float p, Product *q)
-    : code(c), name(n), amount(a), price(p), next(q) {}
+// Implementacion de los constructores
+Product::Product() : name("(void)"), amount(0.0f), price(0.0f), next(nullptr)
+{
+    code = contadorID++;
+}
+
+Product::Product(string n, float a, float p, Product *q)
+    : name(n), amount(a), price(p), next(q)
+{
+    code = contadorID++;
+}
 
 // Destructor
 Product::~Product() {}
@@ -18,9 +26,7 @@ istream &operator>>(istream &is, Product &obj)
 {
     cout << "Nombre del Producto: ";
     is >> obj.name;
-    cout << "Codigo(ID): ";
-    is >> obj.code;
-    cout << "Cantidad en stock";
+    cout << "Cantidad en stock: ";
     is >> obj.amount;
     cout << "Precio unitario: ";
     is >> obj.price;

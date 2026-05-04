@@ -13,6 +13,7 @@ class Product
 {
 private:
     // Caracteristicas basicas
+    static int contadorID;
     int code;
     string name;
     float amount;
@@ -23,20 +24,18 @@ private:
 
 public:
     // Constructor: Inicializa las caracteristicas
-    Product() : code(0), name("(void)"), amount(0.0f), price(0.0f), next(nullptr) {}
-
-    Product(int c, string n, float a, float p, Product *q = nullptr) : code(c), name(n), amount(a), price(p), next(q) {}
-
+    Product();
+    Product(string n, float a, float p, Product *q = nullptr);
     // Destructor simple
-    ~Product() {}
+    ~Product();
 
-    // Getters y Setters (Acceso a caracteristicas)
+    // Getters
     int getCode() const { return code; }
     string getName() const { return name; }
     float getAmount() const { return amount; }
     float getPrice() const { return price; }
 
-    void setCode(int c) { code = c; }
+    // Setters
     void setName(string n) { name = n; }
     void setAmount(float a) { amount = a; }
     void setPrice(float p) { price = p; }
@@ -55,23 +54,4 @@ public:
     friend istream &operator>>(istream &is, Product &obj);
     friend ostream &operator<<(ostream &os, const Product &objt);
 };
-
-// Implementacion de Entrada/Salida
-istream &operator>>(istream &is, Product &obj)
-{
-    cout << "Nombre del producto: ";
-    is >> obj.name;
-    cout << "Codigo (ID): ";
-    is >> obj.code;
-    cout << "Cantidad en stock: ";
-    is >> obj.amount;
-    return is;
-}
-ostream &operator<<(ostream &os, const Product &obj)
-{
-    os << "ID: " << setw(5) << setfill('0') << obj.code
-       << " | " << setw(15) << setfill(' ') << obj.name
-       << " | Cant: " << fixed << setprecision(2) << obj.amount;
-    return os;
-}
 #endif
