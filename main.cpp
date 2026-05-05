@@ -1,37 +1,69 @@
 #include <iostream>
+#include <limits>
 #include "Product.h"
+#include "Store.h"
 
 using namespace std;
 
+// Función auxiliar para pausar la pantalla de forma limpia
+void pausar() {
+    cout << "\nPresione Enter para continuar...";
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    cin.get();
+}
+
 int main()
 {
-    // 1. Producto automatico
-    Product p1;
-    cout << "--- Prueba 1: Producto por defecto ---" << endl;
-    cout << p1 << endl
-         << endl;
+    Store warike;
+    int opcion;
 
-    // 2. Producto con parametros
-    Product p2("Ceviche", 10, 35.50);
-    cout << "--- Prueba 2: Producto con parametros ---" << endl;
-    cout << p2 << endl
-         << endl;
+    do {
+        system("cls"); // Limpia la pantalla (en Windows)
+        cout << "========================================" << endl;
+        cout << "   SISTEMA DE GESTION - EL WARIKE" << endl;
+        cout << "========================================" << endl;
+        cout << "1. Registrar Compra (Entrada de Almacen)" << endl;
+        cout << "2. Ver Inventario Completo" << endl;
+        cout << "3. Ver Reporte de Gastos y Ganancias" << endl;
+        cout << "0. Salir del Sistema" << endl;
+        cout << "----------------------------------------" << endl;
+        cout << "Seleccione una opcion: ";
+        
+        if (!(cin >> opcion)) {
+            cout << "Error: Por favor ingrese un numero valido." << endl;
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            pausar();
+            continue;
+        }
 
-    // 3. Prueba de entrada por teclado (operator >>)
-    Product p3;
-    cout << "--- Prueba 3: Entrada manual ---" << endl;
-    cin >> p3;
+        switch (opcion) {
+            case 1:
+                warike.registerPurchase();
+                pausar();
+                break;
 
-    cout << "\nDatos del producto registrado:" << endl;
-    cout << p3 << endl;
+            case 2:
+                warike.showStore();
+                pausar();
+                break;
 
-    // 4. Prueba lógica simple (Operadores de comparación)
-    cout << "\n--- Prueba 4: Comparacion de codigos ---" << endl;
-    if (p2 > p1)
-    {
-        cout << "El codigo de " << p2.getName() << " es mayor que el de " << p1.getName() << endl;
-    }
-    cout <<"Presione Enter para salir . . .";
+            case 3:
+                warike.showDailyBalance();
+                pausar();
+                break;
+
+            case 0:
+                cout << "Saliendo del sistema... ¡Buen dia!" << endl;
+                break;
+
+            default:
+                cout << "Opcion no valida. Intente de nuevo." << endl;
+                pausar();
+                break;
+        }
+
+    } while (opcion != 0);
     system("pause");
 
     return 0;
