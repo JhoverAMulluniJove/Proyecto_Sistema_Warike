@@ -1,9 +1,13 @@
 #include "Store.h"
 #include <iostream>
+#include <fstream>
+#include <sstream>
 
 using namespace std;
 
-Store::Store() : head(nullptr), totalExpenes(0.0f), totalRevenue(0.0f){}
+Store::Store() : head(nullptr), totalExpenes(0.0f), totalRevenue(0.0f){
+    loadFromFile(); 
+}
 
 Store::~Store() {
     Product* current = head;
@@ -12,6 +16,44 @@ Store::~Store() {
         delete current;
         current = next;
     }
+}
+
+void Store::saveToFile() const {
+    ofstream archivo("almacen.txt");
+    if(!archivo.is_open()) return;
+
+    Product* temp = head;
+    while(temp != nullptr){
+        //Guardamos los datos separados
+        archivo << temp->getName() << "|" 
+                << temp->getAmount() << "|" 
+                << temp->getPrice() << endl;
+        temp = temp->getNext();
+    }
+    archivo.close();
+}
+
+void Store::loadFromFile(){
+    ifstream archivo("almacen.txt");
+    if(!archivo.is_open())return;
+
+    string linea;
+    while (getline(archivo, linea)){
+        if(linea.empty()) continue;
+
+        stringstream ss(linea);
+        string name, s_quantity, s_price;
+
+        if(getline(ss,name,'|') && getline(ss,s_quantity, '|') && getline(ss, s_price)){
+            float quantity = stof(s_quantity);
+            float price = stof(s_price);
+
+            Product* newProduct = new Product(name, quantity, price);
+            newProduct->setNext(head);
+            head = newProduct;
+        }
+    }
+    archivo.close();
 }
 
 Product* Store::findProductByName(string name){
@@ -51,7 +93,7 @@ void Store::registerPurchase(){
 
     if(existing != nullptr){
         existing->setAmount(existing->getAmount() + quantity);
-        cout << "Stock actualizado. Nuevo stock de " << name << ": " << existing->getAmount() << endl;
+        cout << endl << "Stock actualizado. Nuevo stock de " << name << ": " << existing->getAmount() << endl;
     } else{
 
         Product* newProduct = new Product(name, quantity, cost);
@@ -59,8 +101,10 @@ void Store::registerPurchase(){
         newProduct->setNext(head);
         head = newProduct;
 
-        cout << "Nuevo producto registrado en el almacen con ID: " << newProduct->getCode() << endl;
+        cout << endl << "Nuevo producto registrado en el almacen con ID: " << newProduct->getCode() << endl;
     }
+    saveToFile();
+    cout<< endl<<"Datos guardados en almacent.txt"<<endl;
 }
 
 void Store::showStore() const{

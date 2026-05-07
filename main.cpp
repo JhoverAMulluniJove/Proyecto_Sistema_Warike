@@ -54,7 +54,7 @@ int main()
                 break;
 
             case 0:
-                cout << "Saliendo del sistema... ¡Buen dia!" << endl;
+                cout << endl << "Saliendo del sistema... ¡Buen dia!" <<endl<< endl;
                 break;
 
             default:

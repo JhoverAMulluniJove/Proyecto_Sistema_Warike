@@ -11,6 +11,9 @@ private:
     Product* head;
     float totalExpenes;     //Acumulador de Compras
     float totalRevenue;     //Acumulador de Ventas
+
+    void saveToFile() const;
+    void loadFromFile();
     
 public:
     Store();
