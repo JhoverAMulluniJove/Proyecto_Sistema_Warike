@@ -38,6 +38,7 @@ void Store::loadFromFile(){
     if(!archivo.is_open())return;
 
     string linea;
+
     while (getline(archivo, linea)){
         if(linea.empty()) continue;
 
@@ -48,9 +49,11 @@ void Store::loadFromFile(){
             float quantity = stof(s_quantity);
             float price = stof(s_price);
 
-            Product* newProduct = new Product(name, quantity, price);
-            newProduct->setNext(head);
-            head = newProduct;
+            if(findProductByName(name) == nullptr){
+                Product* newProduct = new Product(name, quantity, price);
+                newProduct->setNext(head);
+                head = newProduct;
+            } 
         }
     }
     archivo.close();
@@ -76,7 +79,7 @@ Product* Store::findProductByID(int id){
     }
     return nullptr;
 }
-
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 void Store::registerPurchase(){
     string name;
     float quantity, cost;
