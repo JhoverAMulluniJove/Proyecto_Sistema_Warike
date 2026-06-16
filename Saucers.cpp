@@ -1,3 +1,5 @@
+//Platillo
+
 #include "Saucers.h"
 #include "iostream"
 
@@ -13,7 +15,7 @@ void Saucer::addIngredient(string ingredientName, float quantity){
     recipe.push_back(newIngrediente);
 }
 
-void Saucer::showwSaucer()const{
+void Saucer::showSaucer()const{
     cout << "Platillo: " << name << " | Precio de Venta: S/." << salePrice << endl;
     cout << "  -> Ingredientes necesarios:" << endl;
     

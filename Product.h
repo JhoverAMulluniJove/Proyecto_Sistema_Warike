@@ -17,7 +17,7 @@ private:
     int code;
     string name;
     float amount;
-    float price;
+    float acquisitionCost;
 
     // Enlace a otros archivos
     Product *next;
@@ -25,7 +25,7 @@ private:
 public:
     // Constructor: Inicializa las caracteristicas
     Product();
-    Product(string n, float a, float p, Product *q = nullptr);
+    Product(string n, float a, float c, Product *q = nullptr);
     // Destructor simple
     ~Product();
 
@@ -33,12 +33,12 @@ public:
     int getCode() const { return code; }
     string getName() const { return name; }
     float getAmount() const { return amount; }
-    float getPrice() const { return price; }
+    float getAcquisitionCost() const { return acquisitionCost; }
 
     // Setters
     void setName(string n) { name = n; }
     void setAmount(float a) { amount = a; }
-    void setPrice(float p) { price = p; }
+    void setAcquisitionCost(float c) { acquisitionCost = c; }
 
     // Acceso al enlace para el archivo de logica
     Product *getNext() const { return next; }

@@ -2,13 +2,12 @@
 #include <limits>
 #include "Product.h"
 #include "Store.h"
+#include "Saucers.h"
 
 using namespace std;
 
-// Función auxiliar para pausar la pantalla de forma limpia
 void pausar() {
     cout << "\nPresione Enter para continuar...";
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');
     cin.get();
 }
 
@@ -18,13 +17,16 @@ int main()
     int opcion;
 
     do {
-        system("cls"); // Limpia la pantalla (en Windows)
+        system("cls"); 
         cout << "========================================" << endl;
         cout << "   SISTEMA DE GESTION - EL WARIKE" << endl;
         cout << "========================================" << endl;
-        cout << "1. Registrar Compra (Entrada de Almacen)" << endl;
-        cout << "2. Ver Inventario Completo" << endl;
-        cout << "3. Ver Reporte de Gastos y Ganancias" << endl;
+        cout << "1. Registrar Compra" << endl;
+        cout << "2. Ver Inventario Completo del Almace" << endl;
+        cout << "3. Registrar Nuevo Platillo en la Carta" << endl;
+        cout << "4. Ver Carta de Platillos" << endl;
+        cout << "5. Registrar Venta (Descontar de Almacen)" << endl;
+        cout << "6. Ver Reporte de Gastos y Ganancias" << endl;
         cout << "0. Salir del Sistema" << endl;
         cout << "----------------------------------------" << endl;
         cout << "Seleccione una opcion: ";
@@ -36,6 +38,7 @@ int main()
             pausar();
             continue;
         }
+        cin.ignore(1000, '\n'); // Limpiar búfer inmediatamente tras leer la opción
 
         switch (opcion) {
             case 1:
@@ -49,12 +52,27 @@ int main()
                 break;
 
             case 3:
+                warike.registerSaucer();
+                pausar();
+                break;
+            
+            case 4:
+                warike.showMenu();
+                pausar();
+                break;
+
+            case 5:
+                warike.sellSaucer();
+                pausar();
+                break;
+
+            case 6:
                 warike.showDailyBalance();
                 pausar();
                 break;
 
             case 0:
-                cout << endl << "Saliendo del sistema... ¡Buen dia!" <<endl<< endl;
+                cout << endl << "Saliendo del sistema..." << endl << endl;
                 break;
 
             default:
@@ -64,7 +82,6 @@ int main()
         }
 
     } while (opcion != 0);
-    system("pause");
 
     return 0;
 }

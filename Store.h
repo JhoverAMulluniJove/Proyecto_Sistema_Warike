@@ -2,6 +2,7 @@
 #define STORE_H
 
 #include "Product.h"
+#include "Saucers.h"
 #include <vector>
 #include <string>
 
@@ -9,30 +10,32 @@ class Store
 {
 private:
     Product* head;
-    float totalExpenes;     //Acumulador de Compras
+
+    float totalExpenses;     //Acumulador de Compras
     float totalRevenue;     //Acumulador de Ventas
+    vector<Saucer> menu;
 
     void saveToFile() const;
     void loadFromFile();
+    void saveMenuToFile() const;
+    void loadMenuFromFile();
     
 public:
     Store();
     ~Store();
 
-    // Registro de Compra
+    // Gestión del Almacén
     void registerPurchase();
-
-    //Visualizacion del Almacen
     void showStore() const;
-
-    //Visualizacion de Balance final del dia
     void showDailyBalance() const;
-
-    //Verifica la existencia de algun Producto en el almacen
     Product* findProductByName(string name);
-
-    //Busca Producto mediante codigo
     Product* findProductByID(int id);
+
+    // Gestion de Platillos
+    void registerSaucer();
+    void showMenu() const;
+    Saucer* findSaucerByName(string name);
+    void sellSaucer();
 };
 
 #endif

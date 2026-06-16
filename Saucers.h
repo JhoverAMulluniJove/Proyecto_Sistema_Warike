@@ -25,7 +25,7 @@ class Saucer{
         float getSalePrice() const {return salePrice;}
         const vector<IngredientsRecipe> & getRecipe() const {return recipe;}
 
-        void showwSaucer()const;
+        void showSaucer()const;
 };
 
 #endif

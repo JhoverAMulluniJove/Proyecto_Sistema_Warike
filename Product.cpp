@@ -7,13 +7,13 @@ using namespace std;
 int Product::contadorID = 1;
 
 // Implementacion de los constructores
-Product::Product() : name("(void)"), amount(0.0f), price(0.0f), next(nullptr)
+Product::Product() : name("(void)"), amount(0.0f), acquisitionCost(0.0f), next(nullptr)
 {
     code = contadorID++;
 }
 
-Product::Product(string n, float a, float p, Product *q)
-    : name(n), amount(a), price(p), next(q)
+Product::Product(string n, float a, float c, Product *q)
+    : name(n), amount(a), acquisitionCost(c), next(q)
 {
     code = contadorID++;
 }
@@ -29,7 +29,7 @@ istream &operator>>(istream &is, Product &obj)
     cout << "Cantidad en stock: ";
     is >> obj.amount;
     cout << "Precio unitario: ";
-    is >> obj.price;
+    is >> obj.acquisitionCost;
     return is;
 }
 
@@ -38,6 +38,6 @@ ostream &operator<<(ostream &os, const Product &obj)
     os << "ID: " << setw(5) << setfill('0') << obj.code
        << " | " << setw(12) << setfill(' ') << obj.name
        << " | Cant: " << obj.amount
-       << " | Precio: S/." << fixed << setprecision(2) << obj.price;
+       << " | Costo Unit: S/." << fixed << setprecision(2) << obj.acquisitionCost;
     return os;
 }
