@@ -22,7 +22,7 @@ int main()
         cout << "   SISTEMA DE GESTION - EL WARIKE" << endl;
         cout << "========================================" << endl;
         cout << "1. Registrar Compra" << endl;
-        cout << "2. Ver Inventario Completo del Almace" << endl;
+        cout << "2. Ver Inventario Completo del Almacen" << endl;
         cout << "3. Registrar Nuevo Platillo en la Carta" << endl;
         cout << "4. Ver Carta de Platillos" << endl;
         cout << "5. Registrar Venta (Descontar de Almacen)" << endl;

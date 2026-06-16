@@ -248,6 +248,7 @@ void Store::registerSaucer() {
     } while (continuar == 's' || continuar == 'S');
 
     menu.push_back(newSaucer);
+    saveMenuToFile();
     cout << "\nPlatillo '" << saucerName << "' registrado con exito en la carta!" << endl;
 }
 
@@ -310,7 +311,7 @@ void Store::sellSaucer(){
     totalRevenue += chosenSaucer->getSalePrice();
     saveToFile(); // Actualizar almacén en el disco plano
     
-    cout << "\n¡Venta procesada con éxito!" << endl;
+    cout << "\nVenta procesada con exito!" << endl;
     cout << "Se descontaron los insumos correspondientes de la cocina." << endl;
     cout << "Monto ingresado a caja: S/." << chosenSaucer->getSalePrice() << endl;
 }

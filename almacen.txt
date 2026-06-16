@@ -1,4 +1,6 @@
-leche|22|5
+choclo|59|3
+chancho otros cortes|68|15
+leche|21|5
 mani|3|6.5
 cebolla|68|2.5
 aceite|3|135
@@ -8,10 +10,10 @@ chancho|50|16
 lecheevaporada|6|7
 perejil|2|3
 vinagretinto|12|7
-papa|40|3
+papa|38.5|3
 cilantro|3|2
-queso|18|16.5
-crema de leche|10|10
+queso|17|16.5
+crema de leche|9|10
 rocoto|65|5.5
 carnde picada|6.89|20
 chanchi otros cortes|30|14.5

@@ -1,0 +1,2 @@
+pastel de papa|20|papa:1;leche:1;crema de leche:1;queso:1;
+chicharon de chancho otros cortes|45|chancho otros cortes:2;papa:0.5;choclo:1;
